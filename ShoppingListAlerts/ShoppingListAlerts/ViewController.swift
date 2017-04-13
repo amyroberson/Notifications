@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var txtAddItem: UITextField!
     
@@ -18,14 +18,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    var shoppingList: [String] = []
+    var shoppingList = ShoppingList()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tbleShoppingList.delegate = self
-        self.tbleShoppingList.dataSource = self
+        self.tbleShoppingList.dataSource = shoppingList
         
         self.txtAddItem.delegate = self
         datePicker.isHidden = true
@@ -35,6 +35,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
     
     //MARK: IBAction methods
     
@@ -47,20 +50,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return shoppingList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "idCellItem")! as UITableViewCell
-        cell.textLabel?.text = shoppingList[indexPath.row]
-        return cell
-    }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            shoppingList.removeItemAtIndex(index: indexPath.row)
+            tbleShoppingList.reloadData()
+        }
     }
     
     //MARK: TextField delegate methods
@@ -68,7 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let listItem = textField.text {
             
-            shoppingList.append(listItem)
+            shoppingList.add(listItem)
             
             tbleShoppingList.reloadData()
             txtAddItem.text = ""
