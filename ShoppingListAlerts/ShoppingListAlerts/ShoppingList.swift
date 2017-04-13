@@ -10,9 +10,13 @@ import UIKit
 
 class ShoppingList: NSObject, UITableViewDataSource {
     private let fileURL: URL = {
-       let documentDirectoryURLS = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+       let documentDirectoryURLS = FileManager.default.urls(
+            for: .documentDirectory, in: .userDomainMask)
         let documentDirectoryURL = documentDirectoryURLS.first!
-        return documentDirectoryURL.appendingPathComponent("ShoppingList.items")
+        
+        let url =  documentDirectoryURL.appendingPathComponent("shoppinglist.plist")
+        
+        return url
     }()
     
     fileprivate var items: [String] = []
@@ -25,8 +29,9 @@ class ShoppingList: NSObject, UITableViewDataSource {
     //this would probably be better with a guard throwing an exception
     func saveItems() {
         let itemsArray = items as NSArray
+        
         if !itemsArray.write(to: fileURL, atomically: true) {
-            print("Did not save")
+            print("could not save")
         }
     }
     
@@ -34,6 +39,8 @@ class ShoppingList: NSObject, UITableViewDataSource {
     func loadItems() {
         if let itemsArray = NSArray(contentsOf: fileURL) as? [String] {
             items = itemsArray
+        } else {
+            print("error loading")
         }
     }
     

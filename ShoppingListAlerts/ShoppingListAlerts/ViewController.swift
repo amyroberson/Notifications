@@ -50,7 +50,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
@@ -66,14 +66,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
     //MARK: TextField delegate methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let listItem = textField.text {
-            
-            shoppingList.add(listItem)
-            
-            tbleShoppingList.reloadData()
-            txtAddItem.text = ""
-            txtAddItem.resignFirstResponder()
+        guard let listItem = textField.text else {
+            return true
         }
+        
+        shoppingList.add(listItem)
+        tbleShoppingList.reloadData()
+        txtAddItem.text = ""
+        txtAddItem.resignFirstResponder()
+        
         return true
     }
     
