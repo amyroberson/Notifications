@@ -36,13 +36,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func animateMyViews(viewToHide: UIView, viewToShow: UIView) {
+        let animationDuration = 0.35
+        
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
+            viewToHide.transform = viewToHide.transform.scaledBy(x: 0.001, y: 0.001)
+        }) { (completion) -> Void in
+            viewToHide.isHidden = true
+            viewToShow.isHidden = false
+            
+            viewToShow.transform = viewToShow.transform.scaledBy(x: 0.001, y: 0.001)
+            UIView.animate(withDuration: animationDuration, animations: { () -> Void in
+                viewToShow.transform = .identity
+            })
+        }
+    }
     
     
     //MARK: IBAction methods
     
     @IBAction func scheduleReminder(_ sender: AnyObject) {
-        
+        if datePicker.isHidden {
+            animateMyViews(viewToHide: tbleShoppingList, viewToShow: datePicker)
+        } else {
+            animateMyViews(viewToHide: datePicker, viewToShow: tbleShoppingList)
+        }
+        txtAddItem.isUserInteractionEnabled = !txtAddItem.isUserInteractionEnabled
     }
     
     //MARK: UITableView methods

@@ -41,6 +41,9 @@
                                 <state key="normal" title="Schedule Reminder">
                                     <color key="titleColor" red="0.9882352941176471" green="0.96475252799225897" blue="0.94746273019818128" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="scheduleReminder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BNk-1h-4B9"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x85-51-TR2">
                                 <rect key="frame" x="0.0" y="106" width="375" height="495"/>
