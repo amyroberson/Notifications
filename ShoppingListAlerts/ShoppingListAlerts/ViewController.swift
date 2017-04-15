@@ -52,6 +52,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
         }
     }
     
+    func setupNotificationSettings(){
+        var notificationTypes: UNNotificationSettings 
+    }
     
     //MARK: IBAction methods
     
