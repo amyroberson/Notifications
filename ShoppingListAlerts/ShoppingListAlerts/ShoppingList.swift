@@ -26,6 +26,14 @@ class ShoppingList: NSObject, UITableViewDataSource {
         loadItems()
     }
     
+    func getText(for row: Int) -> String?{
+        if row < items.count{
+            return items[row]
+        } else {
+            return nil
+        }
+    }
+    
     //this would probably be better with a guard throwing an exception
     func saveItems() {
         let itemsArray = items as NSArray

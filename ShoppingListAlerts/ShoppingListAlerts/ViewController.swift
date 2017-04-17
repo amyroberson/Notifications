@@ -18,6 +18,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    var current: String?
+    
     var shoppingList = ShoppingList()
     
     
@@ -52,19 +54,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
         }
     }
     
-    func setupNotificationSettings(){
-        var notificationTypes: UNNotificationSettings 
-    }
+ 
     
     //MARK: IBAction methods
     
     @IBAction func scheduleReminder(_ sender: AnyObject) {
-        if datePicker.isHidden {
-            animateMyViews(viewToHide: tbleShoppingList, viewToShow: datePicker)
-        } else {
+        if let title = current {
+            Util.scheduleNotificationCustom(at: datePicker.date, title: title, subtitle: nil)
+        }
+        if !datePicker.isHidden {
             animateMyViews(viewToHide: datePicker, viewToShow: tbleShoppingList)
         }
-        txtAddItem.isUserInteractionEnabled = !txtAddItem.isUserInteractionEnabled
+        txtAddItem.isUserInteractionEnabled = true
     }
     
     //MARK: UITableView methods
@@ -83,6 +84,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
             shoppingList.removeItemAtIndex(index: indexPath.row)
             tbleShoppingList.reloadData()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let title = shoppingList.getText(for: indexPath.row){
+            current = title
+            animateMyViews(viewToHide: tbleShoppingList, viewToShow: datePicker)
+            txtAddItem.isUserInteractionEnabled = false
+        }
+        
     }
     
     //MARK: TextField delegate methods

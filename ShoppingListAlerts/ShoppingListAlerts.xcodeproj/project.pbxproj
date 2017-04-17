@@ -14,6 +14,7 @@
 		E1BF84E01E9ECDB2005EE89B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1BF84DE1E9ECDB2005EE89B /* LaunchScreen.storyboard */; };
 		E1BF84F11E9ED310005EE89B /* ShoppingListAlertsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF84F01E9ED310005EE89B /* ShoppingListAlertsTests.swift */; };
 		E1BF84F91E9FF72C005EE89B /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF84F81E9FF72C005EE89B /* ShoppingList.swift */; };
+		E1BF84FB1EA53E81005EE89B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF84FA1EA53E81005EE89B /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		E1BF84F01E9ED310005EE89B /* ShoppingListAlertsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListAlertsTests.swift; sourceTree = "<group>"; };
 		E1BF84F21E9ED310005EE89B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1BF84F81E9FF72C005EE89B /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
+		E1BF84FA1EA53E81005EE89B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				E1BF84D71E9ECDB2005EE89B /* ViewController.swift */,
 				E1BF84D91E9ECDB2005EE89B /* Main.storyboard */,
 				E1BF84F81E9FF72C005EE89B /* ShoppingList.swift */,
+				E1BF84FA1EA53E81005EE89B /* Util.swift */,
 				E1BF84DC1E9ECDB2005EE89B /* Assets.xcassets */,
 				E1BF84DE1E9ECDB2005EE89B /* LaunchScreen.storyboard */,
 				E1BF84E11E9ECDB2005EE89B /* Info.plist */,
@@ -207,6 +210,7 @@
 				E1BF84D81E9ECDB2005EE89B /* ViewController.swift in Sources */,
 				E1BF84F91E9FF72C005EE89B /* ShoppingList.swift in Sources */,
 				E1BF84D61E9ECDB2005EE89B /* AppDelegate.swift in Sources */,
+				E1BF84FB1EA53E81005EE89B /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
