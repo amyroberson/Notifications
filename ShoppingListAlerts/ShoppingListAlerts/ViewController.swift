@@ -31,6 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
         
         self.txtAddItem.delegate = self
         datePicker.isHidden = true
+        btnAction.isEnabled = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,6 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
             animateMyViews(viewToHide: datePicker, viewToShow: tbleShoppingList)
         }
         txtAddItem.isUserInteractionEnabled = true
+        btnAction.isEnabled = false
     }
     
     //MARK: UITableView methods
@@ -92,6 +94,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate
             animateMyViews(viewToHide: tbleShoppingList, viewToShow: datePicker)
             txtAddItem.isUserInteractionEnabled = false
         }
+        btnAction.isEnabled = true
         
     }
     

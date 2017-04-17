@@ -33,13 +33,6 @@ class Util {
             if let error = error {
                 print("The error: \(error)")
             }
-            UNUserNotificationCenter.current().getPendingNotificationRequests { (reqs) in
-                print("1 \(reqs)")
-            }
-            UNUserNotificationCenter.current().getDeliveredNotifications(completionHandler: { (req) in
-                print("2 \(req)")
-            })
-
         }
     }
     
